@@ -1,0 +1,391 @@
+/* --- VARIABLES Y RESET --- */
+:root {
+    --bg-color: #121212;       /* Negro suave (Fondo principal) */
+    --card-bg: #1e1e1e;        /* Gris oscuro (Tarjetas) */
+    --primary-color: #d4af37;  /* Dorado (Color de acento) */
+    --text-color: #ffffff;     /* Blanco */
+    --font-main: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* --- NAVEGACIÓN --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    
+    /* AQUÍ ESTÁ LA CLAVE DEL CAMBIO: */
+    position: fixed;       /* Lo deja fijo en la pantalla */
+    top: 0;                /* Pegado arriba del todo */
+    width: 100%;           /* Ocupa todo el ancho */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); /* Degradado para que se lea el texto */
+    border-bottom: none;   /* Quitamos el borde para que se vea limpio */
+    z-index: 1000;         /* Asegura que esté ENCIMA del carrusel */
+    transition: background-color 0.4s ease;
+}
+
+/* 1. El contenedor del botón "Accesorios" */
+.dropdown {
+    position: relative; /* Necesario para que el desplegable se pegue a él */
+    display: inline-block;
+}
+
+/* 2. La caja con la lista de opciones (Oculta al principio) */
+.dropdown-content {
+    display: none;              /* Oculto por defecto */
+    position: absolute;         /* Flota encima de la foto */
+    background-color: #000;     /* Fondo negro */
+    min-width: 200px;           /* Ancho de la caja */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.8); /* Sombra */
+    z-index: 9999;              /* Para que salga ENCIMA de todo */
+    border-top: 3px solid var(--primary-color); /* Borde dorado arriba */
+    padding: 0;
+    list-style: none;
+    top: 100%;                  /* Se coloca justo debajo del texto */
+    left: 0;
+}
+
+/* 3. Estilo de cada opción de la lista */
+.dropdown-content li {
+    width: 100%;
+    border-bottom: 1px solid #333; /* Línea gris fina entre opciones */
+}
+
+/* 4. Estilo de los enlaces dentro del desplegable */
+.dropdown-content li a {
+    color: #fff !important;      /* Forzamos color blanco */
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;            /* Texto alineado a la izquierda */
+    font-size: 0.9rem;
+}
+
+/* 5. Efecto al pasar el ratón por las opciones */
+.dropdown-content li a:hover {
+    background-color: #1a1a1a;   /* Fondo gris oscuro */
+    color: var(--primary-color) !important; /* Texto dorado */
+    padding-left: 25px;          /* Pequeña animación de movimiento */
+}
+
+/* 6. ¡LA MAGIA! Mostrar el menú al poner el ratón encima */
+.dropdown:hover .dropdown-content {
+    display: block;
+
+}
+.navbar.scrolled {
+    background: #000 !important; /* Fondo negro sólido */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Una pequeña sombra debajo */
+    padding: 15px 5%; /* Hacemos la barra un pelín más fina al bajar */
+}
+
+/* Contenedor principal derecha */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* --- BUSCADOR --- */
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.05); /* Fondo sutil */
+    padding: 5px 12px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Efecto al hacer clic dentro */
+.search-box:focus-within {
+    background-color: #000;
+    border-color: var(--primary-color); /* BORDE DORADO */
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-family: var(--font-main);
+    width: 80px;  /* Pequeño al inicio */
+    font-size: 0.9rem;
+    transition: width 0.4s ease;
+}
+
+.search-box input:focus {
+    width: 160px; /* Se estira al escribir */
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    padding: 0;
+}
+
+/* LUPA SVG */
+.search-svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--primary-color); /* LUPA DORADA */
+    transition: transform 0.3s;
+}
+
+.search-btn:hover .search-svg {
+    transform: scale(1.1);
+    stroke: #fff; /* Se pone blanca al pasar el ratón */
+}
+
+/* --- ICONOS DE USUARIO Y CARRITO --- */
+.icon-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+    background: none;
+    border: none;
+}
+
+/* ESTILOS PARA LOS SVGs NUEVOS */
+.nav-svg {
+    width: 28px;
+    height: 28px;
+    color: var(--primary-color); /* ICONOS DORADOS */
+    transition: 0.3s ease;
+}
+
+/* Efecto Hover: Brillo blanco */
+.icon-link:hover .nav-svg {
+    color: #fff;
+    filter: drop-shadow(0 0 4px var(--primary-color));
+}
+
+/* CONTENEDOR DEL CARRITO (Para colocar la bolita) */
+.cart-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* BOLITA DEL NÚMERO */
+#cart-count {
+    background: #fff;    /* Fondo blanco para que resalte sobre el dorado */
+    color: #000;         /* Número negro */
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 1px 5px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* --- ESTILOS DEL CARRUSEL --- */
+.hero-carousel {
+    position: relative;
+    height: 100vh;         /* Altura de toda la pantalla */
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.slide {
+    position: absolute;    /* Uno encima del otro */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    
+    /* Efecto de desvanecimiento (Fade) */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    
+    /* Centrar contenido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* La clase .active es la que hace visible la foto */
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    padding: 20px;
+    /* Un poco de sombra al texto por si la foto es clara */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8); 
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* --- BOTONES DEL CARRUSEL --- */
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    z-index: 10;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 80px;  /* Altura fija: ajusta este número según tu gusto */
+    width: auto;   /* El ancho se calcula solo para no deformar la imagen */
+    object-fit: contain; /* Asegura que se vea entera */
+}
+
+.nav-links { display: flex; gap: 20px; }
+.nav-links a:hover { color: var(--primary-color); transition: 0.3s; }
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 60vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://images.unsplash.com/photo-1527661591475-527312dd65f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 { font-size: 3rem; margin-bottom: 10px; }
+.btn-main {
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: #000;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+    transition: 0.3s;
+}
+.btn-main:hover { background-color: #fff; }
+
+/* --- PRODUCT GRID --- */
+.products-section { padding: 50px 5%; }
+.products-section h2 { text-align: center; margin-bottom: 40px; font-size: 2rem; }
+
+.product-grid {
+    display: grid;
+    /* Esto crea columnas automáticas responsive */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.product-card:hover {
+    transform: translateY(-10px); /* Efecto de elevación */
+    border-color: var(--primary-color);
+}
+
+.product-card img { width: 100%; height: 250px; object-fit: cover; }
+
+.card-info { padding: 20px; text-align: center; }
+.card-info h3 { margin-bottom: 10px; font-size: 1.1rem; }
+.price { color: var(--primary-color); font-size: 1.3rem; font-weight: bold; margin-bottom: 15px; }
+
+.btn-add {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    background: var(--primary-color);
+    color: #000;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: 3px;
+}
+
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 50px;
+}

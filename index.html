@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUXXIXHAX | Tienda de Cachimbas</title>
+    <link rel="icon" href="Logo/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="Logo/logo.png" alt="Logo LuxShiShas">
+            </a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">CACHIMBAS</a></li>
+            <li><a href="#">CAZOLETAS</a></li>
+            <li><a href="#">BASES</a></li>
+            <li class="dropdown">
+                <a href="#">ACESORIOS</a>
+                <ul class="dropdown-content">
+                    <li><a href="#">Manguera</a></li>
+                    <li><a href="#">Cazoleta</a></li>
+                    <li><a href="#">Gestor de Calor</a></li>
+                    <li><a href="#">Pinzas</a></li>
+                    <li><a href="#">Hornillo</a></li>
+                    <li><a href="#">Punzon</a></li>
+                    <li><a href="#">Tapete</a></li>
+                    <li><a href="#">Boquilla</a></li>
+                    <li><a href="#">Carbones</a></li>
+                    <li><a href="#">Cubreviento</a></li>
+                    <li><a href="#">Limpieza</a></li>
+                </ul>
+            </li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">SOBRE NOSOTROS</a></li>
+
+        </ul>
+        <div class="nav-icons">
+            <div class="search-box">
+                <input type="text" placeholder="Buscar...">
+                <button class="search-btn">
+                    <svg class="search-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+            </div>
+            <a href="#login" class="icon-link">
+                <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                        clip-rule="evenodd" />
+                </svg>
+            </a>
+            <div class="icon-link cart-container">
+                <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M2.25 2.25a.75.75 0 000 1.5h1.386c.17 0 .318.114.362.278l2.558 9.592a3.752 3.752 0 00-2.806 3.63c0 .414.336.75.75.75h15.75a.75.75 0 000-1.5H5.378A2.25 2.25 0 017.5 15h11.218a.75.75 0 00.674-.421 60.358 60.358 0 002.96-7.228.75.75 0 00-.525-.965A60.864 60.864 0 005.68 4.509l-.232-.867A1.875 1.875 0 003.636 2.25H2.25zM3.75 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zM16.5 20.25a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" />
+                </svg>
+                <span id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-carousel">
+
+        <div class="slide active" style="background-image: url('Slider1/Sprin.png');"></div>
+
+        <div class="slide" style="background-image: url('Slider1/Sbas.png');"></div>
+
+        <div class="slide" style="background-image: url('Slider1/Scaz.png');"></div>
+
+        <div class="slide" style="background-image: url('Slider1/Sman.png');"></div>
+
+        <div class="slide" style="background-image: url('Slider1/Scar.png');"></div>
+
+        <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+    </header>
+
+    <section id="catalogo" class="products-section">
+        <h2>Nuestras Cachimbas </h2>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="badge">Oferta</div>
+                <img src="https://placehold.co/300x300/222/d4af37?text=Modelo+Alpha" alt="Cachimba Modelo Alpha">
+                <div class="card-info">
+                    <h3>Modelo Alpha X</h3>
+                    <p class="price">149,99€</p>
+                    <button class="btn-add">Añadir al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/222/d4af37?text=Modelo+Pro" alt="Cachimba Modelo Pro">
+                <div class="card-info">
+                    <h3>Steamulation Pro</h3>
+                    <p class="price">299,00€</p>
+                    <button class="btn-add">Añadir al Carrito</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/222/d4af37?text=Mini+Travel" alt="Cachimba Mini">
+                <div class="card-info">
+                    <h3>Vyro One (Travel)</h3>
+                    <p class="price">79,95€</p>
+                    <button class="btn-add">Añadir al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="https://placehold.co/300x300/222/d4af37?text=Cazoleta+Barro" alt="Cazoleta">
+                <div class="card-info">
+                    <h3>Cazoleta Tradicional</h3>
+                    <p class="price">14,95€</p>
+                    <button class="btn-add">Añadir al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ShishaKing - Prohibida la venta a menores de 18 años.</p>
+    </footer>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Función para cambiar de slide
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Función que usan los botones
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        // Cambio automático cada 5 segundos
+        setInterval(() => {
+            moveSlide(1);
+        }, 10000);
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+
+            // Si bajamos más de 50 píxeles...
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled'); // Ponemos la clase negra
+            } else {
+                navbar.classList.remove('scrolled'); // Quitamos la clase (vuelve a transparente)
+            }
+        });
+    </script>
+
+</body>
+
+</html>
